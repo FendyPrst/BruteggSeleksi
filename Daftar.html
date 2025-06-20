@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: #fafafa;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-group input:valid,
+        .form-group select:valid {
+            border-color: #28a745;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 20px;
+            animation: slideIn 0.5s ease;
+        }
+
+        .success-message h3 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .success-message p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #667eea;
+            font-size: 1.2rem;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 Pendaftaran</h1>
+            <p>Sila isi maklumat anda dengan lengkap</p>
+            <b><p>Brutegg Clan Seleksi</p></b>
+        </div>
+
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="fullName">Nama Lengkap <span class="required">*</span></label>
+                <input type="text" id="fullName" name="fullName" required>
+                <span class="form-icon">👤</span>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Umur <span class="required">*</span></label>
+                <input type="number" id="age" name="age" min="1" max="120" required>
+                <span class="form-icon">🎂</span>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Nombor Telefon <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="Contoh: +60123456789" required>
+                <span class="form-icon">📱</span>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Negara Semasa <span class="required">*</span></label>
+                <select id="country" name="country" required>
+                    <option value="">Pilih Negara</option>
+                    <option value="Malaysia">🇲🇾 Malaysia</option>
+                    <option value="Singapore">🇸🇬 Singapura</option>
+                    <option value="Indonesia">🇮🇩 Indonesia</option>
+                    <option value="Thailand">🇹🇭 Thailand</option>
+                    <option value="Philippines">🇵🇭 Filipina</option>
+                    <option value="Vietnam">🇻🇳 Vietnam</option>
+                    <option value="Cambodia">🇰🇭 Kemboja</option>
+                    <option value="Myanmar">🇲🇲 Myanmar</option>
+                    <option value="Laos">🇱🇦 Laos</option>
+                    <option value="Brunei">🇧🇳 Brunei</option>
+                    <option value="Other">🌍 Lain-lain</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tiktok">Nama Akaun TikTok <span class="required">*</span></label>
+                <input type="text" id="tiktok" name="tiktok" placeholder="Contoh: @username" required>
+                <span class="form-icon">🎵</span>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                ✨ Daftar Sekarang
+            </button>
+        </form>
+
+        <div id="successMessage" class="success-message">
+            <h3>🎉 Pendaftaran Berjaya!</h3>
+            <p>Terima kasih kerana mendaftar. Maklumat anda telah disimpan.</p>
+            <p>Anda akan dihubungi melalui WhatsApp tidak lama lagi.</p>
+        </div>
+
+
+    </div>
+
+    <script>
+        // ⚠️ TETAPKAN NOMBOR WHATSAPP ANDA DI SINI
+        const ADMIN_WHATSAPP = "60102427743"; // Tukar dengan nombor WhatsApp anda (tanpa +)
+        
+        // Array untuk menyimpan semua data pendaftaran
+        let registrationData = [];
+
+        // Load data yang tersimpan dari localStorage saat halaman dimuat
+        window.onload = function() {
+            const savedData = localStorage.getItem('registrationData');
+            if (savedData) {
+                registrationData = JSON.parse(savedData);
+            }
+        };
+
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Ambil data dari form
+            const formData = {
+                namaLengkap: document.getElementById('fullName').value,
+                umur: document.getElementById('age').value,
+                nomorTelefon: document.getElementById('phone').value,
+                negara: document.getElementById('country').value,
+                tiktok: document.getElementById('tiktok').value,
+                tarikhPendaftaran: new Date().toLocaleString('ms-MY'),
+                id: Date.now() // ID unik berdasarkan timestamp
+            };
+
+            // Tambah data ke dalam array
+            registrationData.push(formData);
+
+            // Simpan ke localStorage (data akan kekal walaupun browser ditutup)
+            localStorage.setItem('registrationData', JSON.stringify(registrationData));
+
+            // Buat mesej WhatsApp
+            const message = `🆕 PENDAFTARAN BARU
+
+👤 Nama: ${formData.namaLengkap}
+🎂 Umur: ${formData.umur} tahun
+📱 Telefon: ${formData.nomorTelefon}
+🌍 Negara: ${formData.negara}
+🎵 TikTok: ${formData.tiktok}
+📅 Tarikh: ${formData.tarikhPendaftaran}
+
+Pendaftar telah berjaya mendaftar melalui sistem pendaftaran.`;
+
+            // Buka WhatsApp dengan mesej
+            const whatsappURL = `https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+
+            // Papar mesej kejayaan
+            document.getElementById('registrationForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+
+            // Auto scroll ke mesej kejayaan
+            document.getElementById('successMessage').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+
+
+        // Fungsi untuk reset form (jika diperlukan)
+        function resetForm() {
+            document.getElementById('registrationForm').style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('registrationForm').reset();
+        }
+
+        // Tambah validasi real-time
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value;
+            // Auto-format nombor telefon Malaysia
+            if (value.startsWith('01') && !value.startsWith('+60')) {
+                e.target.value = '+60' + value.substring(1);
+            }
+        });
+
+        document.getElementById('tiktok').addEventListener('input', function(e) {
+            let value = e.target.value;
+            // Auto-tambah @ jika tidak ada
+            if (!value.startsWith('@') && value.length > 0) {
+                e.target.value = '@' + value;
+            }
+        });
+    </script>
+</body>
+</html>
